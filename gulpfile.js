@@ -9,6 +9,8 @@ var sourcemaps = require('gulp-sourcemaps');
 
 // Pug / Jade
 var pug = require('gulp-pug');
+var sass = require('gulp-sass');
+
 
 // npm i gulp-less gulp-autoprefixer gulp-sourcemaps --save-dev
 // npm i gulp-pug --save-dev
@@ -31,7 +33,7 @@ gulp.task("server", function () {
 /* ------------------------------------
   LESS
 ------------------------------------ */
-gulp.task('less', function() {
+/*gulp.task('less', function() {
     return gulp.src('./app/less/main.less')
       .pipe(sourcemaps.init())
       .pipe(less())
@@ -41,7 +43,7 @@ gulp.task('less', function() {
       .pipe(browserSync.stream());
 });
 
-
+*/
 /* ------------------------------------
   PUG / JADE
 ------------------------------------ */
@@ -58,12 +60,12 @@ gulp.task('pug', function() {
 /* ------------------------------------
   SASS
 ------------------------------------ */
-/*
-
----- Сделать дома - ДЗ ------
-
-
-*/
+gulp.task('sass', function () {
+  return gulp.src('./app/scss/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./app/css/'))
+  .pipe(browserSync.stream());
+});
 
 
 
@@ -73,6 +75,7 @@ gulp.task('pug', function() {
 gulp.task('watch', function() {
     gulp.watch('./app/less/**/*.less', ['less']);
     gulp.watch('./app/pug/**/*.pug', ['pug']);
+    gulp.watch('./app/scss/**/*.scss', ['sass']);
 });	
 
 
@@ -81,7 +84,7 @@ gulp.task('watch', function() {
 ------------------------------------ */
 gulp.task('default', function() {
     runSequence(
-    	['less', 'pug'],
+    	['sass', 'pug'],
     	['server', 'watch']
     )
 });

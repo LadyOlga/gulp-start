@@ -1,0 +1,22 @@
+{
+  "name": "gulp-webinar-test",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Olga <olgakurs1@yandex.ru>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/LadyOlga/gulp-start",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "font-awesome": "fontawesome#^4.7.0",
+    "bootstrap": "^3.3.7"
+  }
+}
